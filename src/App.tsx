@@ -5,9 +5,11 @@
 
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
+import { useState } from 'react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { BackgroundDoodles } from '@/components/layout/BackgroundDoodles';
+import { LoadingScreen } from '@/components/layout/LoadingScreen';
 
 // Pages
 import HomePage from '@/pages/HomePage';
@@ -18,9 +20,14 @@ import ServiceDetailPage from '@/pages/ServiceDetailPage';
 
 export default function App() {
   const location = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div className="relative isolate min-h-screen flex flex-col bg-monolit-bg text-white">
+      <AnimatePresence>
+        {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+
       <BackgroundDoodles />
       <Header />
       <main className="flex-1 relative z-10">
