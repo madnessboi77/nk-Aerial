@@ -59,10 +59,10 @@ export function Testimonials() {
             {steps.map((step, idx) => {
               const isEven = idx % 2 === 0;
               return (
-                <div key={idx} className={`flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                <div key={idx} className={`flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                   
                   {/* Content Box */}
-                  <div className={`md:w-1/2 flex ${isEven ? 'md:pr-16 md:justify-end text-left md:text-right' : 'md:pl-16 md:justify-start text-left'}`}>
+                  <div className={`order-2 md:order-none w-full md:w-1/2 flex ${isEven ? 'md:pr-16 md:justify-end text-left md:text-right' : 'md:pl-16 md:justify-start text-left'}`}>
                     <Reveal delay={0.1} direction={isEven ? 'right' : 'left'} className="max-w-sm">
                       <h4 className="text-xl md:text-2xl font-serif text-white mb-4">
                         {step.title}
@@ -74,12 +74,12 @@ export function Testimonials() {
                   </div>
 
                   {/* Center Node */}
-                  <div className="absolute left-[27px] md:static md:left-auto md:-translate-x-0 w-14 h-14 shrink-0 rounded-full border border-white/20 bg-monolit-bg-alt flex items-center justify-center -ml-[27px] md:ml-0 z-10">
+                  <div className="order-1 md:order-none relative md:static w-14 h-14 shrink-0 rounded-full border border-white/20 bg-monolit-bg-alt flex items-center justify-center z-10">
                     <span className="text-[10px] font-bold text-monolit-accent">{`0${idx + 1}`}</span>
                   </div>
 
                   {/* Empty Spacer for alternating layout */}
-                  <div className="hidden md:block md:w-1/2"></div>
+                  <div className="hidden md:block md:w-1/2 order-3 md:order-none"></div>
                 </div>
               );
             })}
